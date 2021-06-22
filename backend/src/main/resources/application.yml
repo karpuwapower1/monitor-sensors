@@ -1,0 +1,26 @@
+spring:
+  application.name: monitor-sensors
+
+  datasource:
+    url: jdbc:postgresql://localhost:54321/monitor-sensors_db?useSSL=false
+    username: postgres
+    password: postgres
+    driverClassName: org.postgresql.Driver
+
+  jpa:
+    properties.hibernate:
+      temp.use_jdbc_metadata_defaults: false
+      dialect: org.hibernate.dialect.PostgreSQL95Dialect
+      jdbc.lob.non_contextual_creation: true
+    hibernate.ddl-auto: none
+    generate-ddl: false
+    show-sql: true
+    open-in-view: false
+
+  liquibase:
+    change-log: classpath:db/changelog/changelog-master.xml
+
+jwt:
+  token:
+    secret: secret
+    expiration: 2592000000
