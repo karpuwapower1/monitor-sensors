@@ -24,3 +24,6 @@ jwt:
   token:
     secret: secret
     expiration: 2592000000
+
+frontend:
+  domain: http://localhost:4200

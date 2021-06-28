@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,7 +25,8 @@ public class AuthenticationController {
     private final AuthenticationManager authenticationManager;
     private final JwtTokenProvider tokenProvider;
 
-    @PostMapping("login")
+//    @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
+    @PostMapping("/login")
     public ResponseEntity<String> login(@Valid @RequestBody LoginDto request) {
         val authentication = new UsernamePasswordAuthenticationToken(request.getLogin(), request.getPassword());
         authenticationManager.authenticate(authentication);
